@@ -29,9 +29,9 @@ class diff_moudel(nn.Module):
         weight = self.sigmoid(self.bn1(self.conv_1(edge)))
         out = weight * x + x
         return out
-class CBM(nn.Module):
+class MBA(nn.Module):
     def __init__(self,in_channel):
-        super(CBM, self).__init__()
+        super(MBA, self).__init__()
 
         self.diff_1 = diff_moudel(in_channel)
 
@@ -98,9 +98,3 @@ class CBM(nn.Module):
 #         x = self.bn1(x)
 #         x = self.relu(x)
 #         return x
-if __name__ == '__main__':
-
-    MBA=MBA()
-    input = torch.rand(2, 3, 256, 256)
-    x=MBA.forward(input)
-    print(x.shape)

@@ -1,12 +1,4 @@
-#!/usr/bin/env python
 
-# -- coding: utf-8 --
-# @Time : 2024/12/7 19:56
-# @Author : junwen Liu
-# @Site : 
-# @File : CBAM.py
-# @Email   : junwenLiu0201@126.com
-# @Software: PyCharm
 
 import torch
 import torch.nn.functional as F
@@ -50,9 +42,3 @@ class SpatialGate(nn.Module):
         x_out = self.spatial(x_compress)
         scale = torch.sigmoid(x_out) # broadcasting
         return x * scale
-
-if __name__ == '__main__':
-    CBAM=CBAM(256)
-    input = torch.rand(2,256,16,16)
-    out = CBAM.forward(input)
-    print(out.shape)

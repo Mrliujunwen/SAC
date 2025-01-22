@@ -148,9 +148,3 @@ class MDAF(nn.Module):
         out4 = x2+out4sof
 
         return out3+out4
-if __name__ == '__main__':
-    mdaf=MDAF(256,16,'BiasFree')
-    input1=torch.rand(2,256,16,16)
-    input2=torch.rand(2,256,16,16)
-    out = mdaf.forward(input1,input2)
-    print(out.shape)

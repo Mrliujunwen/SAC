@@ -10,8 +10,8 @@ from typing import Any, Dict, List, Tuple
 from .image_encoder import ImageEncoderViT
 from .mask_decoder import MaskDecoder
 from .prompt_encoder import PromptEncoder
-from .block import MEEM
-from .MDAF import MDAF
+from .MBAblocks import MBAblocks
+from .DCA import DCA
 class Sam(nn.Module):
     mask_threshold: float = 0.0
     image_format: str = "RGB"
@@ -21,8 +21,8 @@ class Sam(nn.Module):
         image_encoder: ImageEncoderViT,
         prompt_encoder: PromptEncoder,
         mask_decoder: MaskDecoder,
-        mba:MEEM,
-        mdaf:MDAF,
+        mMBAblocksba:MBAblocks,
+        dca:DCA,
         pixel_mean: List[float] = [123.675, 116.28, 103.53],
         pixel_std: List[float] = [58.395, 57.12, 57.375],
     ) -> None:
@@ -42,8 +42,8 @@ class Sam(nn.Module):
         self.image_encoder = image_encoder
         self.prompt_encoder = prompt_encoder
         self.mask_decoder = mask_decoder
-        self.mba = mba
-        self.mdaf = mdaf
+        self.MBAblocks = mMBAblocksba
+        self.dca = dca
         self.register_buffer("pixel_mean", torch.Tensor(pixel_mean).view(-1, 1, 1), False)
         self.register_buffer("pixel_std", torch.Tensor(pixel_std).view(-1, 1, 1), False)
 

@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from typing import Optional, Tuple, Type
 from .FFCM import Fused_Fourier_Conv_Mixer
 
-class LMFC(nn.Module):#b,c,256,256
+class MFC(nn.Module):#b,c,256,256
     def __init__(
             self,
     ) -> None:
@@ -151,9 +151,3 @@ class LMFC(nn.Module):#b,c,256,256
         x4=self.bn5(x4)
         x4=self.relu(x4)
         return [x1,x2,x3,x4]
-if __name__ == '__main__':
-    x=torch.rand(2,3,256,256)#b,768,16,16
-    L=LMFC()
-    out = L.forward(x)
-    # print(out)
-    # print(out.shape)

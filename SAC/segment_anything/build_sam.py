@@ -8,8 +8,8 @@ import torch
 from functools import partial
 from .modeling import ImageEncoderViT, MaskDecoder, PromptEncoder, Sam, TwoWayTransformer
 from torch.nn import functional as F
-from .modeling.block import MEEM
-from .modeling.MDAF import MDAF
+from .modeling.MBAblocks import MBAblocks
+from .modeling.DCA import DCA
 from torch import nn
 
 def build_sam_vit_h(args):
@@ -89,8 +89,8 @@ def _build_sam(
             out_chans=prompt_embed_dim,
             adapter_train = encoder_adapter,
         ),
-        mba=MEEM(3,256,128, 4, norm = nn.BatchNorm2d, act = nn.ReLU),
-        mdaf=MDAF(256,1,'ba'),
+        mba=MBAblocks(3,256,128, 4, norm = nn.BatchNorm2d, act = nn.ReLU),
+        dca=DCA(256,1,'ba'),
         prompt_encoder=PromptEncoder(
             embed_dim=prompt_embed_dim,
             image_embedding_size=(image_embedding_size, image_embedding_size),

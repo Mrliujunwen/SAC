@@ -128,8 +128,3 @@ class Fused_Fourier_Conv_Mixer(nn.Module):
 
         return x
 
-if __name__ == '__main__':
-    f=Fused_Fourier_Conv_Mixer(768)
-    input=torch.rand(2,768,16,16)
-    out = f.forward(input)
-    print(out.shape)

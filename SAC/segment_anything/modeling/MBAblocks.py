@@ -2,7 +2,7 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 from .MBA import CBM
-class MEEM(nn.Module):
+class MBAblocks(nn.Module):
     def __init__(self, in_dim,out_dim, hidden_dim, width, norm, act):
         super().__init__()
         self.in_dim = in_dim
@@ -50,8 +50,3 @@ class MEEM(nn.Module):
 
 
 
-if __name__ == '__main__':
-    DetailEnhancement=MEEM(3,128,128, 4, norm = nn.BatchNorm2d, act = nn.ReLU)
-    input = torch.rand(2,3,256,256)
-    out = DetailEnhancement.forward(input)
-    print(out.shape)

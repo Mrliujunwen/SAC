@@ -3,7 +3,7 @@
 
 # This source code is licensed under the license found in the
 # LICENSE file in the root directory of this source tree.
-from .LMFC import LMFC
+from .MFC import MFC
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -113,7 +113,7 @@ class ImageEncoderViT(nn.Module):
 
 
         self.blocks = nn.ModuleList()
-        self.LMFC=LMFC()
+        self.MFC=MFC()
 
         for i in range(depth):
             block = Block(
@@ -152,7 +152,7 @@ class ImageEncoderViT(nn.Module):
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         px = x
-        px=self.LMFC.forward(px)
+        px=self.MFC.forward(px)
 
         x = self.patch_embed(x)#b,16,16,768
         if self.pos_embed is not None:
