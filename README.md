@@ -37,8 +37,8 @@ If you find this work helpful, please consider citing our paper:
 @inproceedings{sun2025mfbsac,
     title={MFB-SAC: A Multi-scale Frequency and Boundary-enhanced SAM for Cell Segmentation},
     author={Sun, Xutao and Xu, Xiaolu and Liu, Junwen and Ren, Yonggong},
-    booktitle={2024 IEEE International Conference on Image Processing (ICIP)},
-    year={2024}
+    booktitle={2025 IEEE International Conference on Image Processing (ICIP)},
+    year={2025}
 }
 ```
 
